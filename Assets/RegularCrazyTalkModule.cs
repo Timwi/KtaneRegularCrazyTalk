@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -496,5 +497,43 @@ public class RegularCrazyTalkModule : MonoBehaviour
         TextMesh.transform.localPosition = new Vector3(-0.083f, 0.0002f, 0.12f);
         TextMesh.transform.localRotation = Quaternion.Euler(90, 0, 0);
         TextMesh.transform.localScale = new Vector3(.002f, .002f, .002f);
+    }
+
+#pragma warning disable 414
+    private readonly string TwitchHelpMessage = @"!{0} up | !{0} down | !{0} hold 12:34 | !{0} release 11:23 [must have specific exact times]";
+#pragma warning restore 414
+
+    private IEnumerator ProcessTwitchCommand(string command)
+    {
+        Match match;
+
+        if (Regex.IsMatch(command, @"^\s*up\s*$", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant))
+        {
+            yield return null;
+            yield return new[] { ButtonUp };
+        }
+        else if (Regex.IsMatch(command, @"^\s*down\s*$", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant))
+        {
+            yield return null;
+            yield return new[] { ButtonDown };
+        }
+        else if ((match = Regex.Match(command, @"^\s*(?:hold|release)\s+(\d+):(\d+)\s*$", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant)).Success)
+        {
+            int m, s;
+            if (!int.TryParse(match.Groups[1].Value, out m) || !int.TryParse(match.Groups[2].Value, out s))
+                yield break;
+            if (s >= 60)
+            {
+                yield return string.Format("sendtochaterror {0} seconds? Really?", s);
+                yield break;
+            }
+
+            yield return null;
+            yield return "solve";
+            yield return "strike";
+            while ((int) Bomb.GetTime() != m * 60 + s)
+                yield return "trycancel";
+            yield return ButtonScreen;
+        }
     }
 }
