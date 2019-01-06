@@ -220,6 +220,7 @@ public class RegularCrazyTalkModule : MonoBehaviour
         _isSolved = false;
 
         var rnd = RuleSeedable.GetRNG();
+        Debug.LogFormat("[Regular Crazy Talk #{0}] Using rule seed: {1}", _moduleId, rnd.Seed);
         _phraseGenerators = new Func<PotentialPhraseAction>[_phrases.Length];
 
         var digits = Enumerable.Range(0, 10).ToArray();
