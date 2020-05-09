@@ -318,7 +318,7 @@ public class RegularCrazyTalkModule : MonoBehaviour
                 return new PotentialPhraseAction(string.Format(phraseFmt, phraseArgs.Select(pair => pair.Insert).ToArray()), getters.Select(g => g(phraseArgs)).ToArray());
             };
         }
-        
+
         ButtonUp.OnInteract = buttonPress(ButtonUp, -1);
         ButtonDown.OnInteract = buttonPress(ButtonDown, 1);
         ButtonScreen.OnInteract = buttonHold;
@@ -511,5 +511,26 @@ public class RegularCrazyTalkModule : MonoBehaviour
                 yield return null;  // don’t let this be canceled because then it would remain held
             yield return ButtonScreen;
         }
+    }
+
+    IEnumerator TwitchHandleForcedSolve()
+    {
+        while (_phraseActions[_selectedPhraseIx].ExpectedDigit != _phraseActions[_selectedPhraseIx].ShownDigit)
+        {
+            ButtonDown.OnInteract();
+            yield return new WaitForSeconds(.1f);
+        }
+
+        // Wait for the right time to hold the button
+        while ((int) Bomb.GetTime() % 10 != _phraseActions[_selectedPhraseIx].Hold)
+            yield return true;
+        ButtonScreen.OnInteract();
+        yield return new WaitForSeconds(.1f);
+
+        // Wait for the right time to release the button
+        while ((int) Bomb.GetTime() % 10 != _phraseActions[_selectedPhraseIx].Release)
+            yield return true;
+        ButtonScreen.OnInteractEnded();
+        yield return new WaitForSeconds(.1f);
     }
 }
