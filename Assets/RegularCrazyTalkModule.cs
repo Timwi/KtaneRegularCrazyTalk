@@ -387,6 +387,7 @@ public class RegularCrazyTalkModule : MonoBehaviour
         Debug.LogFormat(@"[Regular Crazy Talk #{0}] Button held at time {1} and released at {2}. Module solved.", _moduleId, _timeWhenHeld, curTime);
         TextMesh.gameObject.SetActive(false);
         DigitDisplay.gameObject.SetActive(false);
+        _isSolved = true;
         Module.HandlePass();
     }
 
