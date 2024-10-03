@@ -1,0 +1,10 @@
+{
+  "name": "RegularCrazyTalk-Editor",
+  "references": [
+    "RegularCrazyTalk"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": []
+}

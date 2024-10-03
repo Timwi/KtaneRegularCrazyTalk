@@ -9,6 +9,8 @@ using UnityEngine;
 
 using Rnd = UnityEngine.Random;
 
+#pragma warning disable IDE0051 // Remove unused private members
+
 /// <summary>
 /// On the Subject of Regular Crazy Talk
 /// Created by Timwi, Ryaninator and the community at large
@@ -228,7 +230,7 @@ public class RegularCrazyTalkModule : MonoBehaviour
             rnd.ShuffleFisherYates(digits);
             var arr = digits.Subarray(0, 3);
             var getters = Enumerable.Range(0, 3).Select(i => new Func<PhraseArgPair[], int>((PhraseArgPair[] _) => arr[i])).ToArray();
-            var phrase = RegularCrazyTalkModule._phrases[phrIx];
+            var phrase = _phrases[phrIx];
             var phrFmt = new StringBuilder();
             var argGenerators = new List<Func<PhraseArgPair>>();
             Match result;
@@ -266,7 +268,6 @@ public class RegularCrazyTalkModule : MonoBehaviour
                 else if (result.Groups[4].Success)
                 {
                     // result.Groups[4].Value = “a sequence of ...”
-                    Debug.LogFormat(@"<Regular Crazy Talk #{0}> min={1}, max={2}", _moduleId, result.Groups[5].Value, result.Groups[6].Value);
                     var min = int.Parse(result.Groups[5].Value);
                     var max = int.Parse(result.Groups[6].Value);
                     var words = result.Groups[7].Value.Split('/');
@@ -361,6 +362,8 @@ public class RegularCrazyTalkModule : MonoBehaviour
 
     private bool buttonHold()
     {
+        if (_isSolved)
+            return false;
         _timeWhenHeld = (int) Bomb.GetTime() % 10;
         SetWordWrappedText("For the love of — the display just changed, I didn’t know this mod could do that. Does it mention that in the manual?");
         return false;
@@ -368,6 +371,9 @@ public class RegularCrazyTalkModule : MonoBehaviour
 
     private void buttonRelease()
     {
+        if (_isSolved)
+            return;
+
         var curTime = (int) Bomb.GetTime() % 10;
 
         if (_phraseActions[_selectedPhraseIx].ExpectedDigit != _phraseActions[_selectedPhraseIx].ShownDigit)

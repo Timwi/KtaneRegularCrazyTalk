@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{75065286-572A-DBE5-3AFC-DA027CB505BE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegularCrazyTalk", "RegularCrazyTalk.csproj", "{A4D41380-4986-47CC-01E2-9D9948B2D907}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{DCFF5D2B-06AD-B919-2E6C-76156F37EA9B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegularCrazyTalk-Editor", "RegularCrazyTalk-Editor.csproj", "{090B151B-38AF-2CF9-6FEA-B8AD0C5B3AB0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,19 +11,19 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{75065286-572A-DBE5-3AFC-DA027CB505BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{75065286-572A-DBE5-3AFC-DA027CB505BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{75065286-572A-DBE5-3AFC-DA027CB505BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{75065286-572A-DBE5-3AFC-DA027CB505BE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DCFF5D2B-06AD-B919-2E6C-76156F37EA9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DCFF5D2B-06AD-B919-2E6C-76156F37EA9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DCFF5D2B-06AD-B919-2E6C-76156F37EA9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DCFF5D2B-06AD-B919-2E6C-76156F37EA9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4D41380-4986-47CC-01E2-9D9948B2D907}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4D41380-4986-47CC-01E2-9D9948B2D907}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4D41380-4986-47CC-01E2-9D9948B2D907}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4D41380-4986-47CC-01E2-9D9948B2D907}.Release|Any CPU.Build.0 = Release|Any CPU
+		{090B151B-38AF-2CF9-6FEA-B8AD0C5B3AB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{090B151B-38AF-2CF9-6FEA-B8AD0C5B3AB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{090B151B-38AF-2CF9-6FEA-B8AD0C5B3AB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{090B151B-38AF-2CF9-6FEA-B8AD0C5B3AB0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Assembly-CSharp.csproj
+		StartupItem = RegularCrazyTalk.csproj
 	EndGlobalSection
 EndGlobal
